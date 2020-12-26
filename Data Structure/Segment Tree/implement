@@ -6,7 +6,8 @@ public class implement {
     /*
         EveryThing must be 1 Base
         length of Tree array and lazy array must be length of a * 4
-    
+        This is implemention of Min value of L to R
+        
      */
     static void buildSeg(long[] a, long[] tree, int sIndex, int sStart, int sEnd) {
         if (sEnd > sStart) {
