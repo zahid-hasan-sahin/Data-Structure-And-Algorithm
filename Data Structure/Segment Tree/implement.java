@@ -10,9 +10,7 @@ public class implement {
         
      */
     static void buildSeg(long[] a, long[] tree, int sIndex, int sStart, int sEnd) {
-        if (sEnd > sStart) {
-            return;
-        }
+        
         if (sStart == sEnd) {
             tree[sIndex] = a[sStart];
             return;
