@@ -22,9 +22,7 @@ public class implement {
     }
 
     static long query(long[] tree, int sIndex, int sStart, int sEnd, int qStart, int qEnd) {
-        if (sEnd < qStart) {
-            return Integer.MAX_VALUE;
-        } else if (sStart > qEnd) {
+       if (qEnd < sStart || qStart > sEnd) {
             return Integer.MAX_VALUE;
         }
         if (sStart >= qStart && sEnd <= qEnd) {
