@@ -9,8 +9,9 @@ public class implement {
         This is implemention of Min value of L to R
         
      */
+
     static void buildSeg(long[] a, long[] tree, int sIndex, int sStart, int sEnd) {
-        
+
         if (sStart == sEnd) {
             tree[sIndex] = a[sStart];
             return;
@@ -22,7 +23,7 @@ public class implement {
     }
 
     static long query(long[] tree, int sIndex, int sStart, int sEnd, int qStart, int qEnd) {
-       if (qEnd < sStart || qStart > sEnd) {
+        if (qEnd < sStart || qStart > sEnd) {
             return Integer.MAX_VALUE;
         }
         if (sStart >= qStart && sEnd <= qEnd) {
@@ -52,7 +53,7 @@ public class implement {
     static void updateRange(long[] tree, long lazy[], int sIndex, int sStart, int sEnd, int rStart, int rEnd, long val) {
 
         if (lazy[sIndex] != 0) {
-            tree[sIndex] += lazy[sIndex] * (sEnd - sStart + 1);
+            tree[sIndex] += lazy[sIndex];
             if (sStart != sEnd) {
                 lazy[sIndex * 2] += lazy[sIndex];
                 lazy[sIndex * 2 + 1] += lazy[sIndex];
@@ -64,7 +65,7 @@ public class implement {
             return;
         }
         if (sStart >= rStart && sEnd <= rEnd) {
-            tree[sIndex] += ((sEnd - sStart + 1) * val);
+            tree[sIndex] += val;
             if (sStart != sEnd) {
                 lazy[sIndex * 2] += val;
                 lazy[sIndex * 2 + 1] += val;
@@ -79,7 +80,7 @@ public class implement {
 
     static long rangeQuery(long[] tree, long[] lazy, int sIndex, int sStart, int sEnd, int qStart, int qEnd) {
         if (lazy[sIndex] != 0) {
-            tree[sIndex] += lazy[sIndex] * (sEnd - sStart + 1);
+            tree[sIndex] += lazy[sIndex];
             if (sStart != sEnd) {
                 lazy[sIndex * 2] += lazy[sIndex];
                 lazy[sIndex * 2 + 1] += lazy[sIndex];
@@ -109,6 +110,10 @@ public class implement {
             a[i] = scan.nextInt();
         }
         buildSeg(a, tree, 1, 1, len);
+        for (int i = 0; i < 4 * len; i++) {
+            System.out.print(tree[i] + " ");
+        }
+        System.out.println();
 
         long q = scan.nextInt();
 
